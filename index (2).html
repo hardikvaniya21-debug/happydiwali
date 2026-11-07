@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Diwali 🪔</title>
+<style>
+:root{--bg:#12071f;--card:#241038;--gold:#ffc83d;--orange:#ff7a1a;--pink:#ff3d81;--text:#fff4e0;--muted:#cdb8e6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="light"],:root:not([data-theme="light"]){color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12071f}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 50% 0,#3b1457,var(--bg) 60%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh;overflow-x:hidden}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:6px;overflow-x:auto;padding:10px;background:rgba(18,7,31,.9);backdrop-filter:blur(8px)}
+nav a{flex:none;color:var(--gold);text-decoration:none;padding:8px 14px;border:1px solid #ffc83d55;border-radius:20px;font-size:14px}
+section{padding:40px 16px;max-width:900px;margin:auto}
+h1{font-size:clamp(34px,9vw,64px);margin:8px 0;background:linear-gradient(90deg,var(--gold),var(--orange),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;text-align:center}
+h2{color:var(--gold);text-align:center;font-size:28px;margin:0 0 6px}
+.sub{text-align:center;color:var(--muted);margin:0 0 20px}
+.hero{text-align:center;padding-top:30px}
+.big{font-size:70px;animation:glow 2s infinite alternate}
+@keyframes glow{from{filter:drop-shadow(0 0 6px #ff9a1a)}to{filter:drop-shadow(0 0 24px #ffd23d)}}
+input{width:100%;max-width:340px;padding:14px;border-radius:14px;border:2px solid var(--gold);background:#1a0b2b;color:var(--text);font-size:17px;text-align:center}
+button{cursor:pointer;border:0;border-radius:14px;padding:13px 20px;font-size:16px;font-weight:700;color:#2a0f00;background:linear-gradient(90deg,var(--gold),var(--orange));margin:6px 4px}
+button.alt{background:#3a1d57;color:var(--text);border:1px solid #ffc83d66}
+.card{background:var(--card);border-radius:18px;padding:16px;border:1px solid #ffc83d33}
+#fx{width:100%;height:340px;display:block;border-radius:18px;background:#0a0414;border:2px solid #ffc83d66;touch-action:manipulation}
+.row{text-align:center;margin-top:8px}
+.diyas{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.diya{font-size:48px;filter:grayscale(1) brightness(.5);cursor:pointer;transition:.3s;user-select:none}
+.diya.on{filter:none;transform:scale(1.15) translateY(-4px);text-shadow:0 0 20px #ffb300}
+.tabs{display:flex;gap:6px;overflow-x:auto;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+.tabs button{padding:9px 14px;font-size:14px}
+.tabs button.act{background:linear-gradient(90deg,var(--pink),var(--orange));color:#fff}
+.wishes{display:grid;gap:10px}
+.wish{background:var(--card);border-left:4px solid var(--pink);padding:14px;border-radius:12px;line-height:1.5}
+.wish small{display:block;margin-top:8px}
+.wish button{padding:6px 12px;font-size:13px;margin:0 6px 0 0}
+#modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.75);padding:16px}
+#modal.show{display:flex}
+.box{background:linear-gradient(160deg,#4a1a6b,#241038);border:2px solid var(--gold);border-radius:22px;padding:26px 20px;max-width:420px;width:100%;text-align:center;animation:pop .5s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+.box h3{color:var(--gold);font-size:26px;margin:6px 0}
+.box p{font-size:18px;line-height:1.5}
+.box p.from{font-size:clamp(22px,6.5vw,28px);font-weight:800;line-height:1.2;color:#2a0f00;background:linear-gradient(90deg,var(--gold),var(--orange),var(--pink));border-radius:18px;padding:16px 10px;margin:14px 0 18px;box-shadow:0 0 22px #ffb300cc,0 0 48px #ff3d8199;animation:pulse 1.4s ease-in-out infinite alternate}
+.box p.from b{display:block;margin-top:4px;font-size:clamp(30px,9.5vw,42px);font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#fff;text-shadow:0 2px 0 #7a1d00,0 0 14px #ffffff99}
+@keyframes pulse{from{transform:scale(1);filter:brightness(1)}to{transform:scale(1.05);filter:brightness(1.2)}}
+#flash{position:fixed;inset:0;background:#fff;z-index:99;opacity:0;pointer-events:none;transition:opacity .08s}
+footer{text-align:center;color:var(--muted);padding:30px 16px 50px}
+.toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--gold);color:#2a0f00;padding:10px 18px;border-radius:20px;font-weight:700;z-index:100;display:none}
+#stage{width:100%;height:min(75vh,560px);border-radius:18px;overflow:hidden;border:2px solid #ffc83d66;background:#060313;touch-action:manipulation;color:#fff;text-align:center}
+#stage canvas{display:block}
+</style>
+</head>
+<body>
+<div id="flash"></div>
+<nav>
+ <a href="#home">🏠 Home</a><a href="#crackers">🎆 Crackers</a><a href="#diyas">🪔 Diyas</a><a href="#scene">🏡 3D Ghar</a>
+</nav>
+
+<section id="home" class="hero">
+ <div class="big">🪔</div>
+ <h1>Happy Diwali!</h1>
+ <p class="sub">તમારું નામ લખો અને ખાસ દિવાળી શુભેચ્છા મેળવો ✨</p>
+ <input id="name" placeholder="Your name…" maxlength="30" autocomplete="off">
+ <div class="row">
+  <button id="go">🎁 Get My Wish</button>
+ </div>
+ <label style="color:var(--muted);font-size:14px"><input type="checkbox" id="torchOn" checked style="width:auto"> 🔦 Flashlight blink with the wish</label>
+</section>
+
+<section id="crackers">
+ <h2>🎆 Crackers Zone</h2>
+ <p class="sub">Tap the sky to launch fireworks!</p>
+ <canvas id="fx"></canvas>
+ <div class="row">
+  <button data-t="rocket">🚀 Rocket</button>
+  <button data-t="anar">🌟 Anaar</button>
+  <button data-t="bomb">💥 Bomb</button>
+  <button data-t="show">🎇 Grand Show</button>
+  <button class="alt" id="snd">🔊 Sound On</button>
+ </div>
+</section>
+
+<section id="diyas">
+ <h2>🪔 Light the Diyas</h2>
+ <p class="sub">Tap each diya to light it. Light all five for a surprise!</p>
+ <div class="diyas" id="dRow"></div>
+ <p class="sub" id="dMsg" style="margin-top:16px"></p>
+</section>
+
+<section id="scene">
+ <h2>🏡 3D દિવાળી ઘર</h2>
+ <p class="sub">દીવા પર અને રંગોળી પર ટેપ કરો 🪔🌸 • બધા પ્રગટે એટલે નામ સાથે આતશબાજી થશે 🎆</p>
+ <div id="stage"></div>
+ <p class="sub" style="margin:14px 0 0">🎆 Crackers Zone • 🪔 Light the Diyas</p>
+ <div class="row"><button id="bRk">🚀 Rocket</button><button id="bAn">🌟 Anaar</button><button id="bBm">💥 Bomb</button><button id="bDi">🪔 Light All Diyas</button><button id="showBtn">🎇 Grand Show + Name</button></div>
+</section>
+
+<footer>Made with ❤️ by Hardik Vaniya • Shubh Deepavali 🪔</footer>
+
+<div id="modal"><div class="box">
+ <div style="font-size:56px">🎆</div>
+ <h3 id="mTitle"></h3>
+ <p id="mText"></p>
+ <p class="from">🪔 Happy Diwali from<br><b>Hardik Vaniya</b> 🪔</p>
+ <p style="margin:6px 0;color:var(--muted)">👇 કોઈ પણ એક પર ટેપ કરો</p>
+ <button data-go="scene">🏡 3D Ghar</button><button data-go="diyas">🪔 Diyas</button><button data-go="crackers">🎆 Crackers</button>
+ <div><button class="alt" id="mClose">✖ Close</button></div>
+</div></div>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+const SELF=["May this Diwali bring you joy, success and sparkling moments, {n}! 🪔","{n}, may the light of the diyas drive away every darkness from your life! ✨","Happy Diwali, {n}! May Lakshmi Maa bless you with endless happiness and prosperity! 🙏","{n}, you deserve all the sweets and all the sparkle this Diwali! 🎇","Wishing {n} a blast of happiness, brighter than the biggest firework! 💥"];
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function toast(t){const e=$('#toast');e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',2200)}
+
+/* ---------- Sound ---------- */
+let sound=true,actx;
+function boom(big){if(!sound)return;try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();const d=actx.sampleRate*(big?.6:.35),b=actx.createBuffer(1,d,actx.sampleRate),c=b.getChannelData(0);for(let i=0;i<d;i++)c[i]=(Math.random()*2-1)*Math.pow(1-i/d,3);const s=actx.createBufferSource();s.buffer=b;const g=actx.createGain();g.gain.value=big?.9:.5;s.connect(g).connect(actx.destination);s.start()}catch(e){}}
+$('#snd').onclick=e=>{sound=!sound;e.target.textContent=sound?'🔊 Sound On':'🔇 Sound Off'};
+
+/* ---------- Fireworks ---------- */
+const cv=$('#fx'),cx=cv.getContext('2d');let W,H,P=[];
+function size(){const r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0)}
+size();addEventListener('resize',size);
+const COLS=[30,45,0,330,280,190,120];
+function burst(x,y,n=70,hue){hue=hue??pick(COLS);for(let i=0;i<n;i++){const a=Math.PI*2*i/n,s=1+Math.random()*4.5;P.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:1,h:hue+Math.random()*30,g:.05})}boom()}
+function rocket(x){const y0=H;let y=y0,tx=x,ty=H*.2+Math.random()*H*.3;P.push({r:1,x:tx,y:y0,vx:0,vy:-7,ty,l:1,h:40})}
+function anar(x){let k=0;const t=setInterval(()=>{for(let i=0;i<8;i++)P.push({x,y:H-8,vx:(Math.random()-.5)*3,vy:-3-Math.random()*5,l:1,h:30+Math.random()*30,g:.1});if(++k>40)clearInterval(t)},40);boom()}
+function bomb(x,y){for(let i=0;i<150;i++){const a=Math.random()*6.28,s=Math.random()*8;P.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:1,h:20+Math.random()*40,g:.08})}boom(true);cv.style.transform='translate(3px,2px)';setTimeout(()=>cv.style.transform='',90);if(navigator.vibrate)navigator.vibrate(80)}
+function show(){for(let i=0;i<10;i++)setTimeout(()=>{if(i%3==0)rocket(Math.random()*W);else burst(Math.random()*W,H*.15+Math.random()*H*.4,80)},i*350)}
+function loop(){cx.fillStyle='rgba(10,4,20,.22)';cx.fillRect(0,0,W,H);
+ for(let i=P.length-1;i>=0;i--){const p=P[i];p.x+=p.vx;p.y+=p.vy;
+  if(p.r){if(p.y<=p.ty){burst(p.x,p.y,80);P.splice(i,1);continue}cx.fillStyle='#ffd27a';cx.fillRect(p.x,p.y,2,6);continue}
+  p.vy+=p.g;p.vx*=.985;p.l-=.014;if(p.l<=0){P.splice(i,1);continue}
+  cx.fillStyle=`hsla(${p.h},100%,60%,${p.l})`;cx.beginPath();cx.arc(p.x,p.y,2.2,0,6.28);cx.fill()}
+ requestAnimationFrame(loop)}
+loop();
+cv.addEventListener('pointerdown',e=>{const r=cv.getBoundingClientRect();burst(e.clientX-r.left,e.clientY-r.top,70)});
+document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{const t=b.dataset.t;if(t=='rocket')rocket(W*(.2+Math.random()*.6));if(t=='anar')anar(W*(.2+Math.random()*.6));if(t=='bomb')bomb(W/2,H/2);if(t=='show')show()});
+
+/* ---------- Flashlight ---------- */
+const fl=$('#flash');
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+async function flashlight(){
+ let track=null;
+ try{
+  const s=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});
+  track=s.getVideoTracks()[0];
+  const caps=track.getCapabilities?track.getCapabilities():{};
+  if(!caps.torch){s.getTracks().forEach(t=>t.stop());track=null}
+  else{for(let i=0;i<5;i++){await track.applyConstraints({advanced:[{torch:true}]});await wait(180);await track.applyConstraints({advanced:[{torch:false}]});await wait(180)}s.getTracks().forEach(t=>t.stop());return}
+ }catch(e){track=null}
+ // fallback: screen flash + vibrate
+ for(let i=0;i<5;i++){fl.style.opacity=.9;if(navigator.vibrate)navigator.vibrate(120);await wait(120);fl.style.opacity=0;await wait(150)}
+}
+
+/* ---------- Personal wish ---------- */
+let lastText='';
+$('#go').onclick=()=>{
+ const n=$('#name').value.trim();
+ if(!n){toast('Please enter your name 🙂');$('#name').focus();return}
+ const nm=n.charAt(0).toUpperCase()+n.slice(1);
+ const w=nm+', જોધલપીરબાપા તમને અને તમારા પરિવારને સદા ખુશ રાખે. 🙏';
+ $('#mTitle').textContent='હેપી દિવાળી, '+nm+'! 🎉';
+ $('#mText').textContent=w;
+ lastText='હેપી દિવાળી, '+nm+'!\n'+w+'\n\n🪔 Happy Diwali from Hardik Vaniya 🪔';
+ $('#modal').classList.add('show');
+ boom(true);if(navigator.vibrate)navigator.vibrate([100,50,100]);
+ if($('#torchOn').checked)flashlight();
+ // fireworks in background of page
+ NAME=nm;
+};
+$('#mClose').onclick=()=>$('#modal').classList.remove('show');
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>{const id=b.dataset.go;$('#modal').classList.remove('show');$('#'+id).scrollIntoView({behavior:'smooth'});if(id=='scene')setTimeout(grand,700);if(id=='crackers')setTimeout(show,600)});
+function share(t){const msg=t+'\n\n🪔 Get yours: '+location.href.split('#')[0];window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank')}
+
+/* ---------- Diyas ---------- */
+let lit=0;const dRow=$('#dRow');
+for(let i=0;i<5;i++){const d=document.createElement('div');d.className='diya';d.textContent='🪔';d.onclick=()=>{if(d.classList.contains('on'))return;d.classList.add('on');lit++;boom();
+ if(lit==5){$('#dMsg').textContent='✨ All diyas lit! May your life glow with happiness! ✨';burst(W/2,H/2,120);show()}else $('#dMsg').textContent=lit+' of 5 lit…'};dRow.appendChild(d)}
+
+/* ---------- 3D Ghar ---------- */
+let NAME='',lightAll=()=>{},grand=()=>{},tt=0;
+try{
+const T=THREE,stg=$('#stage');
+const R=new T.WebGLRenderer({antialias:true});
+R.setPixelRatio(Math.min(devicePixelRatio,2));R.shadowMap.enabled=true;R.shadowMap.type=T.PCFSoftShadowMap;R.toneMapping=T.ACESFilmicToneMapping;R.toneMappingExposure=1.3;R.outputEncoding=T.sRGBEncoding;
+stg.appendChild(R.domElement);
+const S=new T.Scene();S.background=new T.Color(0x060313);S.fog=new T.FogExp2(0x060313,.01);
+const C=new T.PerspectiveCamera(48,1,.1,300);
+const rs=()=>{const w=stg.clientWidth,h=stg.clientHeight;R.setSize(w,h);C.aspect=w/h;C.updateProjectionMatrix();C.position.set(0,7,w/h<1?46:36)};
+addEventListener('resize',rs);rs();
+const M=(c,o)=>new T.MeshStandardMaterial(Object.assign({color:c,roughness:.8},o));
+const add=(g,m,x,y,z)=>{const o=new T.Mesh(g,m);o.position.set(x,y,z);o.castShadow=o.receiveShadow=true;S.add(o);return o};
+const tex=(a,b)=>{const c=document.createElement('canvas');c.width=c.height=64;const g=c.getContext('2d'),r=g.createRadialGradient(32,32,2,32,32,32);r.addColorStop(0,a);r.addColorStop(.3,b);r.addColorStop(1,'rgba(255,90,0,0)');g.fillStyle=r;g.fillRect(0,0,64,64);return new T.CanvasTexture(c)};
+/* lights */
+S.add(new T.HemisphereLight(0x5a6bb5,0x1a1008,.7));
+const moon=new T.DirectionalLight(0x9db4ff,.8);moon.position.set(-14,30,24);moon.castShadow=true;moon.shadow.mapSize.set(2048,2048);moon.shadow.bias=-.001;Object.assign(moon.shadow.camera,{left:-32,right:32,top:32,bottom:-32});S.add(moon);
+const warm=new T.PointLight(0xffa24a,0,60);warm.position.set(0,3,14);S.add(warm);
+/* sky */
+{const a=[];for(let i=0;i<350;i++)a.push((Math.random()-.5)*160,14+Math.random()*50,-60-Math.random()*30);const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(a,3));S.add(new T.Points(g,new T.PointsMaterial({size:.5,fog:false})));
+const m=new T.Mesh(new T.SphereGeometry(5,24,24),new T.MeshBasicMaterial({color:0xfff3d0,fog:false}));m.position.set(-45,38,-100);S.add(m)}
+/* ground + house */
+const cvs=(w,h,fn,rx,ry)=>{const c=document.createElement('canvas');c.width=w;c.height=h;fn(c.getContext('2d'),w,h);const t=new T.CanvasTexture(c);t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(rx||1,ry||1);t.anisotropy=4;t.encoding=T.sRGBEncoding;return t};
+const noise=(g,w,h,n,a)=>{for(let i=0;i<n;i++){g.fillStyle='rgba('+(Math.random()<.5?'0,0,0':'255,255,255')+','+Math.random()*a+')';g.fillRect(Math.random()*w,Math.random()*h,1+Math.random()*2,1+Math.random()*2)}};
+const plaster=cvs(256,256,(g,w,h)=>{g.fillStyle='#e6d6b8';g.fillRect(0,0,w,h);noise(g,w,h,5000,.18)},3,1);
+const grass=cvs(256,256,(g,w,h)=>{g.fillStyle='#2a4a24';g.fillRect(0,0,w,h);for(let i=0;i<6000;i++){g.fillStyle='hsl('+(90+Math.random()*30)+',45%,'+(14+Math.random()*14)+'%)';g.fillRect(Math.random()*w,Math.random()*h,1,3)}},40,40);
+const stone=cvs(256,256,(g,w,h)=>{g.fillStyle='#7d7469';g.fillRect(0,0,w,h);for(let y=0;y<4;y++)for(let x=0;x<4;x++){g.fillStyle='hsl(30,8%,'+(40+Math.random()*14)+'%)';g.fillRect(x*64+2,y*64+2,60,60)}noise(g,w,h,2500,.15)},4,4);
+const tile=cvs(128,128,(g,w,h)=>{for(let q=0;q<8;q++)for(let c=-1;c<8;c++){g.fillStyle='hsl('+(10+Math.random()*8)+',55%,'+(30+Math.random()*10)+'%)';g.fillRect(c*16+(q%2)*8,q*16,15,14);g.fillStyle='rgba(0,0,0,.35)';g.fillRect(c*16+(q%2)*8,q*16+13,15,3)}});
+const wood=cvs(128,128,(g,w,h)=>{g.fillStyle='#5a3216';g.fillRect(0,0,w,h);for(let i=0;i<60;i++){g.fillStyle='rgba(0,0,0,'+Math.random()*.3+')';g.fillRect(Math.random()*w,0,1+Math.random()*2,h)}});
+const rangoli=cvs(256,256,g=>{const col=['#ff3d81','#ffc83d','#ff7a1a','#fff','#3ddc97'];for(let k=6;k>=1;k--)for(let i=0;i<12;i++){g.save();g.translate(128,128);g.rotate(i*Math.PI/6);g.fillStyle=col[(k+i)%5];g.beginPath();g.ellipse(0,k*18,9+k*1.5,k*8,0,0,6.3);g.fill();g.restore()}g.fillStyle='#fff';g.beginPath();g.arc(128,128,12,0,6.3);g.fill()});
+const bx=(w,h,d,m,x,y,z)=>add(new T.BoxGeometry(w,h,d),m,x,y,z);
+const mPl=M(0xffffff,{map:plaster,bumpMap:plaster,bumpScale:.4,roughness:.9}),mSt=M(0xffffff,{map:stone,roughness:.85}),white=M(0xf4efe6,{roughness:.7}),dark=M(0x2a1a10),brick=M(0x8a3f2a);
+const gr=add(new T.PlaneGeometry(200,200),M(0xffffff,{map:grass,roughness:1}),0,0,0);gr.rotation.x=-Math.PI/2;gr.castShadow=false;
+const pth=add(new T.PlaneGeometry(3,9),mSt,0,.02,14.7);pth.rotation.x=-Math.PI/2;pth.castShadow=false;
+bx(17,.6,9,mSt,0,.3,0);bx(8.4,.6,4.4,mSt,0,.3,6.2);bx(4.4,.4,1,mSt,0,.2,8.9);bx(5,.2,.8,mSt,0,.1,9.8);
+bx(16,3.6,8,mPl,0,2.4,0);bx(16.8,.35,9,white,0,4.4,.2);bx(12,3.2,6,mPl,0,6.2,-.5);bx(8.4,.35,4.6,white,0,4.4,6.3);
+[-3.9,3.9].forEach(x=>add(new T.CylinderGeometry(.3,.3,3.8,16),white,x,2.5,8.2));
+bx(2.6,3.1,.1,white,0,2.15,4.02);bx(2.2,2.8,.12,M(0xffffff,{map:wood,roughness:.6}),0,2,4.06);bx(.04,2.8,.14,dark,0,2,4.08);
+[-.2,.2].forEach(x=>add(new T.SphereGeometry(.07,8,8),M(0xc9a227,{metalness:1,roughness:.3}),x,2,4.18));
+for(let i=0;i<13;i++)add(new T.SphereGeometry(.09,8,8),M(0xff8a00,{emissive:0x552200}),-1.2+i*.2,3.5-.18*Math.sin(i/12*Math.PI),4.2);
+const glassM=M(0xffe2a0,{emissive:0xffb347,emissiveIntensity:1.3});
+const win=(x,y,z,w,h)=>{bx(w+.3,h+.3,.14,white,x,y,z);bx(w,h,.1,glassM,x,y,z+.07);bx(.06,h,.12,dark,x,y,z+.12);bx(w,.06,.12,dark,x,y,z+.12);bx(w+.5,.12,.35,white,x,y-h/2-.2,z+.12)};
+[-6.9,-4.7,4.7,6.9].forEach(x=>win(x,2.6,4,1.5,1.8));
+[-4.3,-2.2,2.2,4.3].forEach(x=>win(x,6.3,2.5,1.4,1.8));win(0,5.8,2.5,1.6,2.4);
+bx(16.4,.1,.1,white,0,5.62,4.55);for(let i=0;i<=32;i++)bx(.07,1,.07,white,-8.1+i*.506,5.1,4.55);
+{const a=6.6,b=3.6,c=a-b,h=2.6,A=[-a,0,b],B=[a,0,b],Q=[a,0,-b],Z=[-a,0,-b],E=[-c,h,0],F=[c,h,0],ps=[],uv=[];
+ [A,B,F,A,F,E,Q,Z,E,Q,E,F,Z,A,E,B,Q,F].forEach(p=>{ps.push(p[0],p[1],p[2]);uv.push(p[0]*.35,p[2]*.35+p[1]*.5)});
+ const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(ps,3));g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.computeVertexNormals();
+ add(g,M(0xffffff,{map:tile,roughness:.7,side:T.DoubleSide}),0,7.8,-.5)}
+bx(13.4,.25,7.6,white,0,7.85,-.5);bx(.8,2,.8,brick,-3,9.6,-1);
+bx(18.4,1.6,.4,mPl,-11.8,.8,19);bx(18.4,1.6,.4,mPl,11.8,.8,19);bx(.4,1.6,28,mPl,-21,.8,5);bx(.4,1.6,28,mPl,21,.8,5);
+[-14,-8,8,14].forEach(x=>bx(.7,1.9,.7,mPl,x,.95,19));
+[-2.9,2.9].forEach(x=>{bx(.9,2.2,.9,mPl,x,1.1,19);bx(1.1,.18,1.1,white,x,2.3,19);add(new T.SphereGeometry(.28,12,12),M(0xffe2a0,{emissive:0xffb347,emissiveIntensity:2}),x,2.65,19)});
+const TM=[],BL=[];let TL=null;
+const tree=(x,z,s)=>{add(new T.CylinderGeometry(.25*s,.4*s,3*s,8),M(0x4a3020),x,1.5*s,z);const fm=M(0x1f4d2a,{flatShading:true,emissive:0x000000});TM.push({m:fm,ph:TM.length*1.7});
+ [0,1.3,2.4].forEach((o,i)=>{const R=(2.2-i*.5)*s,cy=(3+o)*s;add(new T.IcosahedronGeometry(R,1),fm,x,cy,z);for(let k=0;k<16;k++){const a=Math.random()*6.283,b=Math.acos(Math.random()*1.6-.6);BL.push([x+R*1.03*Math.sin(b)*Math.cos(a),cy+R*1.03*Math.cos(b),z+R*1.03*Math.sin(b)*Math.sin(a),Math.random()*6.283])}})};
+[[-14,6,1.3],[14,6,1.3],[-17,-2,1.6],[17,-2,1.6],[-10,-8,1.4],[10,-8,1.4]].forEach(a=>tree(a[0],a[1],a[2]));
+{const n=BL.length,pa=new Float32Array(n*3),ca=new Float32Array(n*3);BL.forEach((p,i)=>pa.set(p.slice(0,3),i*3));const g=new T.BufferGeometry();g.setAttribute('position',new T.BufferAttribute(pa,3));g.setAttribute('color',new T.BufferAttribute(ca,3));TL=new T.Points(g,new T.PointsMaterial({size:.55,map:tex('rgba(255,255,255,1)','rgba(255,255,255,.55)'),vertexColors:true,blending:T.AdditiveBlending,transparent:true,depthWrite:false,fog:false}));TL.frustumCulled=false;S.add(TL)}
+const TLg=[[-14,6,9],[14,6,9]].map(a=>{const l=new T.PointLight(0xffffff,1.2,22);l.position.set(a[0],a[1],a[2]);S.add(l);return l}),tcol=new T.Color();
+const treeFx=()=>{const c=TL.geometry.attributes.color;BL.forEach((p,i)=>{tcol.setHSL((p[3]/6.283+tt*.15)%1,1,.55);const v=(.35+.65*Math.max(0,Math.sin(tt*3+p[3]*5)))*1.4;c.array[i*3]=tcol.r*v;c.array[i*3+1]=tcol.g*v;c.array[i*3+2]=tcol.b*v});c.needsUpdate=true;TM.forEach(o=>o.m.emissive.setHSL((tt*.12+o.ph)%1,1,.5).multiplyScalar(.28+.12*Math.sin(tt*2+o.ph)));TLg[0].color.setHSL((tt*.1)%1,1,.6);TLg[1].color.setHSL((tt*.1+.5)%1,1,.6)};
+[-7.5,-5.6,5.6,7.5].forEach(x=>add(new T.IcosahedronGeometry(.55,1),M(0x23602e,{flatShading:true}),x,.8,4.9));
+{const n=48,im=new T.InstancedMesh(new T.SphereGeometry(.11,8,8),new T.MeshBasicMaterial({fog:false}),n),m=new T.Matrix4(),cs=[0xff9a1a,0xffd23d,0xff3d81,0xffffff,0xff6a00];
+ for(let i=0;i<n;i++){const a=i<34;m.setPosition(a?-8.25+i*.5:-6.5+(i-34),a?4.1:7.65,a?4.8:3.2);im.setMatrixAt(i,m);im.setColorAt(i,new T.Color(cs[i%5]).multiplyScalar(1.8))}S.add(im)}
+[[0,3.4,7,1.4,22],[0,6,6,.8,18]].forEach(a=>{const l=new T.PointLight(0xffd08a,a[3],a[4]);l.position.set(a[0],a[1],a[2]);S.add(l)});
+const rc=document.createElement('canvas');rc.width=rc.height=512;const g2=rc.getContext('2d'),rt=new T.CanvasTexture(rc);rt.anisotropy=4;rt.encoding=T.sRGBEncoding;
+const FN=s=>'bold '+s+'px "Noto Sans Gujarati",system-ui,sans-serif';
+const drawR=on=>{const g=g2;g.clearRect(0,0,512,512);g.textAlign='center';g.textBaseline='middle';
+ if(!on){g.fillStyle='rgba(30,12,50,.85)';g.beginPath();g.arc(256,256,250,0,6.3);g.fill();g.setLineDash([14,12]);g.lineWidth=6;g.strokeStyle='#ffc83d';g.beginPath();g.arc(256,256,232,0,6.3);g.stroke();g.setLineDash([]);g.fillStyle='#ffc83d';g.font='bold 90px system-ui';g.fillText('👆',256,190);g.font=FN(74);g.fillText('Tap here',256,310)}
+ else{const col=['#ff3d81','#ffc83d','#ff7a1a','#ffffff','#3ddc97'];
+  for(let k=6;k>=3;k--)for(let i=0;i<16;i++){g.save();g.translate(256,256);g.rotate(i*Math.PI/8+k*.2);g.fillStyle=col[(k+i)%5];g.beginPath();g.ellipse(0,k*34,12+k*2.5,k*7,0,0,6.3);g.fill();g.restore()}
+  g.fillStyle='#fff4e0';g.beginPath();g.arc(256,256,112,0,6.3);g.fill();g.lineWidth=8;g.strokeStyle='#ff7a1a';g.stroke();
+  const fit=(t,f,mx)=>{while(g.measureText(t).width>190&&f>14){f-=2;g.font=FN(f)}};
+  let hd='Happy Diwali',f1=42;g.font=FN(f1);fit(hd,f1);g.fillStyle='#d94a00';g.fillText(hd,256,204);
+  g.fillStyle='#ffc83d';g.fillRect(186,232,140,4);
+  const t=NAME||'શુભ દિવાળી';let fs=58;g.font=FN(fs);while(g.measureText(t).width>190&&fs>16){fs-=2;g.font=FN(fs)}
+  g.fillStyle='#8a1d00';g.fillText(t,256,282)}
+ rt.needsUpdate=true};
+drawR(0);let rT=-1;
+const rg=new T.Mesh(new T.CircleGeometry(3.2,64),new T.MeshBasicMaterial({map:rt,transparent:true}));rg.rotation.x=-Math.PI/2;rg.position.set(8.5,.06,13);S.add(rg);
+/* diyas */
+const ft=tex('rgba(255,250,200,1)','rgba(255,170,40,.9)');
+const dg=new T.LatheGeometry([[0,0],[.2,0],[.38,.12],[.46,.22],[.36,.18],[0,.12]].map(p=>new T.Vector2(p[0],p[1])),16),dm=M(0xb5532a,{roughness:.7,side:T.DoubleSide});
+const lc=document.createElement('canvas');lc.width=256;lc.height=96;{const g=lc.getContext('2d');g.fillStyle='#ffc83d';g.beginPath();g.moveTo(24,4);g.arcTo(252,4,252,92,40);g.arcTo(252,92,4,92,40);g.arcTo(4,92,4,4,40);g.arcTo(4,4,252,4,40);g.fill();g.fillStyle='#2a0f00';g.font='bold 44px system-ui,sans-serif';g.textAlign='center';g.textBaseline='middle';g.fillText('👆 Tap here',128,50)}
+const lm=new T.SpriteMaterial({map:new T.CanvasTexture(lc),fog:false});
+const D=[],HT=[],pos=[];
+[4.5,6.5,8.2].forEach(x=>pos.push([x,5.6],[-x,5.6]));[11,13,15,17].forEach(z=>pos.push([2.2,z],[-2.2,z]));pos.push([2.9,9],[-2.9,9]);
+pos.forEach(p=>{const g=new T.Group();g.position.set(p[0],0,p[1]);g.scale.setScalar(1.6);
+ const b=new T.Mesh(dg,dm);b.castShadow=true;g.add(b);
+ const h=new T.Mesh(new T.SphereGeometry(.75,8,8),new T.MeshBasicMaterial({visible:false}));h.position.y=.3;h.userData.d=g;g.add(h);HT.push(h);
+ const sm=()=>new T.SpriteMaterial({map:ft,blending:T.AdditiveBlending,transparent:true,depthWrite:false,fog:false});
+ const f=new T.Sprite(sm());f.position.y=.65;f.visible=false;
+ const gl=new T.Sprite(sm());gl.position.y=.4;gl.scale.set(3,3,1);gl.material.opacity=.3;gl.visible=false;
+ const lb=new T.Sprite(lm),by=1.5+(D.length%2)*.9;lb.scale.set(2,.75,1);lb.position.y=by;lb.userData.d=g;HT.push(lb);g.add(f,gl,lb);g.userData={f,gl,lb,by,on:0,ph:Math.random()*9};S.add(g);D.push(g)});
+let lt=0;
+const light=g=>{if(g.userData.on)return;g.userData.on=1;g.userData.f.visible=g.userData.gl.visible=true;g.userData.lb.visible=false;lt++;warm.intensity=lt/D.length*2.4;boom();if(lt==D.length)setTimeout(grand,700)};
+lightAll=()=>{if(lt==D.length)grand();else D.forEach((g,i)=>setTimeout(()=>light(g),i*160))};
+/* firework particles */
+const N=7000,pp=new Float32Array(N*3),pc=new Float32Array(N*3),pv=new Float32Array(N*3),pt=new Float32Array(N*3),pb=new Float32Array(N*3),pl=new Float32Array(N),pm=new Uint8Array(N);let pi=0;
+const pg=new T.BufferGeometry();pg.setAttribute('position',new T.BufferAttribute(pp,3));pg.setAttribute('color',new T.BufferAttribute(pc,3));
+const pts=new T.Points(pg,new T.PointsMaterial({size:.6,map:tex('rgba(255,255,255,1)','rgba(255,255,255,.6)'),vertexColors:true,blending:T.AdditiveBlending,transparent:true,depthWrite:false,fog:false}));pts.frustumCulled=false;S.add(pts);
+const sp=(x,y,z,vx,vy,vz,c,life,mode,tx,ty,tz)=>{const i=pi++%N,k=i*3;pp[k]=x;pp[k+1]=y;pp[k+2]=z;pv[k]=vx;pv[k+1]=vy;pv[k+2]=vz;pb[k]=c.r;pb[k+1]=c.g;pb[k+2]=c.b;pl[i]=life;pm[i]=mode;pt[k]=tx;pt[k+1]=ty;pt[k+2]=tz};
+const upd=dt=>{const dr=Math.pow(.2,dt),a=1-Math.exp(-dt*2.2);
+ for(let i=0;i<N;i++){if(pl[i]<=0){pc[i*3]=pc[i*3+1]=pc[i*3+2]=0;continue}const k=i*3;let b;
+  if(pm[i]){pl[i]-=dt*.1;for(let j=0;j<3;j++)pp[k+j]+=(pt[k+j]-pp[k+j])*a;b=Math.min(1,pl[i]*3)*(.75+.25*Math.sin(i+tt*10))}
+  else{pl[i]-=dt*.7;pv[k+1]-=4*dt;for(let j=0;j<3;j++){pv[k+j]*=dr;pp[k+j]+=pv[k+j]*dt}b=Math.min(1,pl[i]*1.5)}
+  pc[k]=pb[k]*b;pc[k+1]=pb[k+1]*b;pc[k+2]=pb[k+2]*b}
+ pg.attributes.position.needsUpdate=pg.attributes.color.needsUpdate=true};
+const GOLD=new T.Color(1,.75,.3),RK=[];
+const launch=(x,ty,nm)=>RK.push({x,y:.5,z:nm?-3:(Math.random()-.5)*10-4,ty,v:15+Math.random()*4,nm});
+const bu=r=>{const h=Math.random(),m=Math.random()*2|0;for(let i=0;i<150;i++){const t=i/150*6.283,c=new T.Color().setHSL((h+Math.random()*.08)%1,1,.6);let vx,vy,vz=0;
+ if(m==1){vx=Math.cos(t)*6;vy=Math.sin(t)*6}
+ else{const a=Math.random()*6.283,b=Math.acos(2*Math.random()-1),sp2=3.5+Math.random()*5;vx=sp2*Math.sin(b)*Math.cos(a);vy=sp2*Math.cos(b);vz=sp2*Math.sin(b)*Math.sin(a)}
+ sp(r.x,r.y,r.z,vx,vy,vz,c,1,0)}};
+const namePts=txt=>{const c=document.createElement('canvas');c.width=640;c.height=160;const g=c.getContext('2d');let fs=110;const f=s=>'bold '+s+'px "Noto Sans Gujarati","Shruti",system-ui,sans-serif';g.font=f(fs);while(g.measureText(txt).width>600&&fs>20){fs-=4;g.font=f(fs)}
+ g.fillStyle='#fff';g.textAlign='center';g.textBaseline='middle';g.fillText(txt,320,80);
+ const d=g.getImageData(0,0,640,160).data,o=[];for(let y=0;y<160;y+=4)for(let x=0;x<640;x+=4)if(d[(y*640+x)*4+3]>128)o.push([(x-320)/34,14+(80-y)/34]);return o};
+const tb=r=>{r.nm.forEach(p=>sp(r.x,r.y,r.z,0,0,0,new T.Color().setHSL(.08+Math.random()*.07,1,.65),1,1,p[0],p[1],0));bu(r)};
+const nameShow=()=>{const P=namePts(NAME||'શુભ દિવાળી'),s=Math.ceil(P.length/2500),Q=P.filter((p,i)=>i%s==0).sort((a,b)=>a[0]-b[0]),n=5,sz=Math.ceil(Q.length/n);for(let i=0;i<n;i++){const grp=Q.slice(i*sz,(i+1)*sz);if(!grp.length)continue;const x=grp.reduce((a,p)=>a+p[0],0)/grp.length;setTimeout(()=>launch(x,12+(i%2)*2,grp),i*450)}};
+grand=()=>{for(let i=0;i<8;i++)setTimeout(()=>launch((Math.random()-.5)*34,11+Math.random()*7),i*450);setTimeout(nameShow,2600)};
+/* interaction */
+const RC=new T.Raycaster();
+R.domElement.addEventListener('pointerdown',e=>{const r=R.domElement.getBoundingClientRect(),u=(e.clientX-r.left)/r.width;RC.setFromCamera(new T.Vector2(u*2-1,-(e.clientY-r.top)/r.height*2+1),C);const h=RC.intersectObjects(HT.concat([rg]))[0];if(h&&h.object===rg){drawR(1);rT=tt;boom(true);bu({x:8.5,y:7,z:13})}else if(h)light(h.object.userData.d);else launch((u-.5)*38,11+Math.random()*7)});
+$('#showBtn').onclick=grand;
+let shake=0;
+$('#bRk').onclick=()=>launch((Math.random()-.5)*30,11+Math.random()*7);
+$('#bAn').onclick=()=>{const x=(Math.random()-.5)*20,z=14+Math.random()*3;let k=0;const t=setInterval(()=>{for(let i=0;i<10;i++)sp(x,.3,z,(Math.random()-.5)*3,9+Math.random()*6,(Math.random()-.5)*3,new T.Color().setHSL(.05+Math.random()*.1,1,.6),1,0);if(++k>45)clearInterval(t)},35);boom()};
+$('#bBm').onclick=()=>{const r={x:(Math.random()-.5)*10,y:10,z:0};for(let i=0;i<4;i++)bu(r);boom(true);shake=1;if(navigator.vibrate)navigator.vibrate(80)};
+$('#bDi').onclick=lightAll;
+/* loop */
+let t0=performance.now();
+(function an(){const n=performance.now(),dt=Math.min(.05,(n-t0)/1000);t0=n;tt=n/1000;
+ C.position.x=Math.sin(tt*.2)*3;if(shake>0){shake-=dt*2;C.position.y=7+Math.sin(tt*80)*shake*.4}else C.position.y=7;C.lookAt(0,7,0);
+ D.forEach(g=>{const u=g.userData;if(!u.on)u.lb.position.y=u.by+.12*Math.sin(tt*3+u.ph);if(u.on){const s=1+.12*Math.sin(tt*14+u.ph)+.06*Math.sin(tt*23+u.ph*2);u.f.scale.set(.6*s,.95*s*(1.05+.1*Math.sin(tt*11+u.ph)),1);u.gl.material.opacity=.3+.08*Math.sin(tt*9+u.ph)}});
+ for(let i=RK.length-1;i>=0;i--){const r=RK[i];r.y+=r.v*dt;sp(r.x,r.y,r.z,(Math.random()-.5)*.6,-1.5,(Math.random()-.5)*.6,GOLD,.5,0);if(r.y>=r.ty){RK.splice(i,1);boom(true);Array.isArray(r.nm)?tb(r):bu(r)}}
+ if(rT>=0){const k=Math.min(1,(tt-rT)/.8);rg.scale.setScalar(.5+.5*(1-Math.pow(1-k,3)))}
+ treeFx();upd(dt);R.render(S,C);requestAnimationFrame(an)})();
+}catch(e){$('#stage').textContent='3D માટે WebGL સપોર્ટ જોઈએ.'}
+setTimeout(()=>burst(W/2,H/3,90),800);
+</script>
+</body>
+</html>
